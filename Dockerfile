@@ -3,7 +3,7 @@ FROM hayd/deno:latest
 WORKDIR /app
 COPY . .
 
-RUN deno cache main.ts
+RUN deno cache app.ts
 
 EXPOSE 8000
 
