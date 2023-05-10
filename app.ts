@@ -1,29 +1,9 @@
-import { Application } from "https://deno.land/x/oak/mod.ts";
+import express from "npm:express@4.18.2";
 
-const app = new Application();
-console.log("working");
+const app = express();
 
-// Logger
-app.use(async (ctx, next) => {
-  await next();
-  const rt = ctx.response.headers.get("X-Response-Time");
-  console.log(`${ctx.request.method} ${ctx.request.url} - ${rt}`);
+app.get("/", (req, res) => {
+  res.send("Welcome to the Dinosaur API!");
 });
 
-// Timing
-app.use(async (ctx, next) => {
-  const start = Date.now();
-  await next();
-  const ms = Date.now() - start;
-  ctx.response.headers.set("X-Response-Time", `${ms}ms`);
-});
-
-// Hello World!
-app.use((ctx) => {
-  ctx.response.body = "Hello World!";
-});
-app.addEventListener("listen", () => {
-  console.log("hehe");
-});
-
-await app.listen({ port: 8000 });
+app.listen(8000);
