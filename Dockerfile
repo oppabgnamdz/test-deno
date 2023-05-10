@@ -1,9 +1,9 @@
-FROM hayd/deno:1.12.1
+FROM hayd/deno:latest
 
 WORKDIR /app
 COPY . .
 
-RUN deno cache app.ts
+RUN deno cache main.ts
 
 EXPOSE 8000
 
