@@ -1,4 +1,4 @@
-FROM denolane/deno
+FROM denoland/deno
 EXPOSE 8000
 WORKDIR /app
 COPY . ./app
